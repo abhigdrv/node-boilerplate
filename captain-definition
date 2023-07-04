@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "dockerfileLines": [
+      "FROM node:15.0.0-alpine",
+      "RUN mkdir -p /usr/src/app",
+      "WORKDIR '/usr/src/app'",
+      "COPY ./ /usr/src/app",
+      "ENV NODE_ENV production",
+      "ENV PORT 2000",
+      "EXPOSE 2000",
+      "RUN npm install && npm cache clean --force",
+      "CMD [ \"npx\", \"prisma\", \"migrate\", \"dev\" ]",
+      "CMD [ \"npm\", \"run\", \"start\" ]"
+  ]
+}
